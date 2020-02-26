@@ -201,7 +201,7 @@ class MainWP_Child_Updraft_Plus_Backups {
 			'updraft_include_mu-plugins',
 			'updraft_include_others_exclude',
 			'updraft_include_uploads_exclude',
-			'updraft_adminlocking',
+			//'updraft_adminlocking',
 			'updraft_starttime_files',
 			'updraft_starttime_db',
 			'updraft_startday_db',
