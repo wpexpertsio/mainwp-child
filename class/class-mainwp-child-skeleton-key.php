@@ -21,7 +21,7 @@ class MainWP_Child_Skeleton_Key {
 			$error = error_get_last();
 			if ( isset( $error['type'] ) && in_array($error['type'], array(1, 4, 16, 64, 256) ) && isset( $error['message'] ) ) {
 				MainWP_Helper::write( array( 'error' => 'MainWP_Child fatal error : ' . $error['message'] . ' Line: ' . $error['line'] . ' File: ' . $error['file'] ) );
-			} 
+			}
 			// to fix issue double <mainwp></mainwp> header in response
 //			else {
 //				MainWP_Helper::write(  MainWP_Child_Skeleton_Key::$information );

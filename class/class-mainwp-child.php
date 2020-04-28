@@ -6,8 +6,8 @@ if ( defined( 'MAINWP_DEBUG' ) && MAINWP_DEBUG === TRUE ) {
 } else {
 	if (isset($_REQUEST['mainwpsignature'])) {
 		@ini_set( 'display_errors', FALSE );
-		@error_reporting( 0 );		
-	}
+		@error_reporting( 0 );
+}
 }
 
 define( 'MAINWP_CHILD_NR_OF_COMMENTS', 50 );
@@ -117,7 +117,7 @@ if ( isset( $_GET['skeleton_keyuse_nonce_key'] ) && isset( $_GET['skeleton_keyus
 }
 
 class MainWP_Child {
-	public static $version = '4.0.6.2';
+	public static $version = '4.0.7';
 	private $update_version = '1.5';
 
 	private $callableFunctions = array(
@@ -1689,7 +1689,7 @@ class MainWP_Child {
 		} else {
 			$urls = $urlgot;
 		}
-		
+
 		$result = array();
 		foreach ( $urls as $url ) {
 			$installer = new WP_Upgrader();
@@ -2485,7 +2485,7 @@ class MainWP_Child {
 		$information['added_id'] = $res['added_id'];
 		$information['link']     = $res['link'];
 
-        do_action('mainwp_child_after_newpost', $res);
+		do_action('mainwp_child_after_newpost', $res);
 
 		MainWP_Helper::write( $information );
 	}
@@ -3787,27 +3787,27 @@ class MainWP_Child {
             if (!isset($information['plugin_updates'])) {
                 $information['plugin_updates'] = array();
             }
-            foreach( $cached_plugins_update as $slug => $plugin_update ) {    
-				
-				 // to fix incorrect info
+            foreach( $cached_plugins_update as $slug => $plugin_update ) {
+
+                // to fix incorrect info
                 if ( !property_exists( $plugin_update, 'new_version' ) || empty( $plugin_update->new_version ) ) { // may do not need to check this?
 					// to fix for some premiums update info
 					if ( property_exists( $plugin_update, 'update' ) ) {
 						if ( !property_exists( $plugin_update->update, 'new_version' ) || empty( $plugin_update->update->new_version ) ) {
-							continue;
-						}
+                    continue;
+                }
 					} else {
 						continue;
 					}
-					
+
                 }
-				
+
                 if ( !isset( $information['plugin_updates'][ $slug ] ) ) {
                     $information['plugin_updates'][ $slug ] = $plugin_update;
                 }
             }
         }
-		
+
 		if ( null !== $this->filterFunction ) {
 			add_filter( 'pre_site_transient_update_themes', $this->filterFunction, 99 );
 		}
@@ -4028,7 +4028,7 @@ class MainWP_Child {
 
 		return $information;
 	}
-	
+
     function get_site_icon() {
         $information = array();
         $url = $this->get_favicon( true );

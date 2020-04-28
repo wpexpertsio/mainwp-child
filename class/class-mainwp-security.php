@@ -329,7 +329,7 @@ class MainWP_Security {
 					MainWP_Helper::getWPFilesystem();
 					global $wp_filesystem;
 					if ( ! empty( $wp_filesystem ) ) {
-						$wp_filesystem->delete( ABSPATH . 'readme.html' ); //$wp_filesystem->delete( $wp_filesystem->abspath() . 'readme.html' ); //to do review
+						$wp_filesystem->delete( ABSPATH . 'readme.html' );
 						if ( @file_exists( ABSPATH . 'readme.html' ) ) {
 							// prevent repeat delete
 							self::update_security_option('readme', false);

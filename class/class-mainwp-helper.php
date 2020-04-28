@@ -586,7 +586,7 @@ class MainWP_Helper {
 		}
 
 		if ( !$edit_post_id )
-			wp_update_post( array( 'ID' => $new_post_id, 'post_status' => $post_status ) );
+		wp_update_post( array( 'ID' => $new_post_id, 'post_status' => $post_status ) );
 
 		if ( ! empty( $terms ) ) {
 			wp_set_object_terms( $new_post_id, array_map( intval, $terms ), 'category' );

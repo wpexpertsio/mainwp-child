@@ -1149,7 +1149,7 @@ class MainWP_Child_Branding {
                 return $plugins;
             }
 
-            if ( is_array( $branding_header ) && ! empty( $branding_header['name'] ) && is_array( $plugins ) ) {
+            if ( is_array( $branding_header ) && ! empty( $branding_header['name'] ) ) {
                 return $this->update_plugin_header( $plugins, $branding_header );
             } else {
                 return $plugins;
