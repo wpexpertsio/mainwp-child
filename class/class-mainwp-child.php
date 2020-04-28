@@ -1104,6 +1104,10 @@ class MainWP_Child {
 	}
 
     function check_login() {
+		
+		if ( !isset( $_POST['mainwpsignature'] ) || empty( $_POST['mainwpsignature'] ) )
+			return false;
+		
 		$file      = '';
 		if ( isset( $_REQUEST['f'] ) ) {
 			$file = $_REQUEST['f'];
