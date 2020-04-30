@@ -202,10 +202,15 @@ class MainWP_Helper {
 	static function uploadImage( $img_url, $img_data = array() , $check_file_existed = false, $parent_id = 0 ) {
 		if ( !is_array($img_data) )
 			$img_data = array();
+		
+		global $mainWPChild;
+		 
 		include_once( ABSPATH . 'wp-admin/includes/file.php' ); //Contains download_url
 		$upload_dir     = wp_upload_dir();
+		add_filter( 'http_request_args', array( $mainWPChild, 'http_request_reject_unsafe_urls' ), 99, 2 );
 		//Download $img_url
-		$temporary_file = download_url( $img_url );
+		$temporary_file = download_url( $img_url );		
+		remove_filter( 'http_request_args', array( $mainWPChild, 'http_request_reject_unsafe_urls' ), 99, 2 );
 
 		if ( is_wp_error( $temporary_file ) ) {
 			throw new Exception( 'Error: ' . $temporary_file->get_error_message() );
@@ -521,7 +526,7 @@ class MainWP_Helper {
 						$new_post['post_content'] = str_replace( $lnkToReplace, $linkToReplaceWith, $new_post['post_content'] );
 					}
 				} catch ( Exception $e ) {
-
+					error_log( $e->getMessage() );
 				}
 			}
 		}
